@@ -1,25 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class InstructionTable extends Component {
-	render() {
-		const { mnemonic } = this.props;
+function InstructionTable(props) {
+	const { mnemonic, instructions } = props;
 
-		return (
-			<table className="instruction-table" id={ mnemonic }>
-				<thead>
-					<tr><th colSpan="3"><a href={ 'http://z80-heaven.wikidot.com/instructions-set:' + mnemonic } title={ mnemonic + ' at z80-heaven' }>{ mnemonic }</a></th></tr>
-					<tr><th>instruction</th><th>nops</th><th>bytes</th></tr>
-				</thead>
-				<tbody>
-					{ this.renderRows() }
-				</tbody>
-			</table>
-		);
-	}
-
-	renderRows() {
-		const { mnemonic, instructions } = this.props;
-
+	function renderRows() {
 		return instructions.map((item) => {
 			const { instruction, nops, opcodes } = item;
 			const operands = extractOperands(instruction);
@@ -33,6 +17,18 @@ class InstructionTable extends Component {
 			);
 		});
 	}
+
+	return (
+		<table className="instruction-table" id={ mnemonic }>
+			<thead>
+				<tr><th colSpan="3"><a href={ 'http://z80-heaven.wikidot.com/instructions-set:' + mnemonic } title={ mnemonic + ' at z80-heaven' }>{ mnemonic }</a></th></tr>
+				<tr><th>instruction</th><th>nops</th><th>bytes</th></tr>
+			</thead>
+			<tbody>
+				{ renderRows() }
+			</tbody>
+		</table>
+	);
 }
 
 function extractOperands(instruction) {

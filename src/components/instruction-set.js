@@ -1,23 +1,22 @@
-import React, { Component } from 'react';
+import React from 'react';
 import InstructionTable from './instruction-table';
 
-class InstructionSet extends Component {
-	render() {
-		return (
-			<div className="instruction-set">
-				{ this.renderInstructions() }
-			</div>
-		);
-	}
+function InstructionSet(props) {
+	const { instructionSet } = props;
 
-	renderInstructions() {
-		const instructionSet = this.props.instructionSet;
+	function renderInstructions() {
 		const mnemonics = Object.keys(instructionSet);
 
 		return mnemonics.map(function (mnemonic) {
 			return <InstructionTable key={ mnemonic } mnemonic={ mnemonic } instructions={ instructionSet[mnemonic] } />
 		});
 	}
+
+	return (
+		<div className="instruction-set">
+			{ renderInstructions() }
+		</div>
+	);
 }
 
 export default InstructionSet;

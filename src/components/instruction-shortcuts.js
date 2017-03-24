@@ -1,41 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class InstructionShortcut extends Component {
-	render() {
-		const mnemonic = this.props.mnemonic;
+function InstructionShortcuts(props) {
+	const { instructionSet } = props;
+	const allMnemonics = Object.keys(instructionSet);
 
-		return (
-			<li><a href={ '#' + mnemonic }>{ mnemonic }</a></li>
-		);
-	}
-}
-
-class InstructionShortcutGroup extends Component {
-	render() {
-		return (
-			<ul>{ this.renderShortcuts() }</ul>
-		);
-	}
-
-	renderShortcuts() {
-		return this.props.mnemonics.map(function (mnemonic) {
-			return <InstructionShortcut key={ mnemonic } mnemonic={ mnemonic } />;
-		});
-	}
-}
-
-class InstructionShortcuts extends Component {
-	render() {
-		return (
-			<div className="shortcuts">
-				{ this.renderShortcutGroups() }
-			</div>
-		);
-	}
-
-	renderShortcutGroups() {
-		const instructionSet = this.props.instructionSet;
-		const allMnemonics = Object.keys(instructionSet);
+	function renderShortcutGroups() {
 		const groups = [];
 		var letterCode, letter, mnemonics;
 
@@ -49,13 +18,39 @@ class InstructionShortcuts extends Component {
 		}
 
 		return groups;
-
-		function mnemonicsStartingWith(letter) {
-			return allMnemonics.filter(function (mnemonic) {
-				return mnemonic.charAt(0) === letter;
-			});
-		}
 	}
+
+	function mnemonicsStartingWith(letter) {
+		return allMnemonics.filter(function (mnemonic) {
+			return mnemonic.charAt(0) === letter;
+		});
+	}
+
+	return (
+		<div className="shortcuts">
+			{ renderShortcutGroups() }
+		</div>
+	);
+}
+
+function InstructionShortcutGroup(props) {
+	function renderShortcuts() {
+		return props.mnemonics.map(function (mnemonic) {
+			return <InstructionShortcut key={ mnemonic } mnemonic={ mnemonic } />;
+		});
+	}
+
+	return (
+		<ul>{ renderShortcuts() }</ul>
+	);
+}
+
+function InstructionShortcut(props) {
+	const { mnemonic } = props;
+
+	return (
+		<li><a href={ '#' + mnemonic }>{ mnemonic }</a></li>
+	);
 }
 
 export default InstructionShortcuts;

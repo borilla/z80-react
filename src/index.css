@@ -1,5 +1,199 @@
 body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
+	margin: 0.4em 0.4em 1em 0.4em;
+}
+
+body,
+table {
+	font-family: sans-serif;
+	font-size: large;
+}
+
+a {
+	color: inherit;
+}
+
+h1 {
+	text-align: center;
+}
+
+.shortcuts,
+.instruction-table {
+	font-family: monospace;
+	margin: 1.5em auto 0.2em auto;
+	max-width: 30em;
+	width: 100%;
+}
+
+.shortcuts ul {
+	list-style-type: none;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+}
+
+.shortcuts li {
+	float: left;
+}
+
+.shortcuts a {
+	background: rgba(255,0,0,0.1);
+	border: 1px solid rgba(255,0,0,0.3);
+	color: red;
+	display: inline-block;
+	margin: 0.2em;
+	min-width: 2.2em;
+	padding: 0.1em 0.2em;
+	text-align: center;
+	text-decoration: none;
+}
+
+.shortcuts a:hover {
+	border-color: black;
+	color: black;
+}
+
+.instruction-table {
+	background-color: rgba(0,0,255,0.1);
+	border-collapse: collapse;
+	border: 1px solid #ccc;
+}
+
+.instruction-table tbody tr:nth-child(odd) {
+	background-color: rgba(255,255,255,0.4);
+}
+
+.instruction-table td {
+	padding: 0.1em 0.4em;
+	text-align: left;
+	white-space: nowrap;
+}
+
+.instruction-table th {
+	border-bottom: 1px solid #ccc;
+	color: #666;
+	font-weight: normal;
+	font-size: medium;
+	padding: 0.2em 0.4em;
+	text-align: left;
+}
+
+.instruction-table th:nth-child(1) {
+	width: 45%;
+}
+
+.instruction-table th:nth-child(2) {
+	width: 25%;
+}
+
+.instruction-table th[colspan] {
+	border-bottom-style: none;
+	color: black;
+	font-weight: bold;
+	font-size: x-large;
+	padding: 0.2em 0.4em 0 0.4em;
+	text-align: center;
+	width: initial;
+}
+
+.instruction-table b {
+	color: red;
+	font-weight: normal;
+}
+
+footer {
+	color: #666;
+	font-size: small;
+	margin-top: 1.5em;
+	text-align: center;
+}
+
+.fixed {
+	bottom: 0;
+	left: 0;
+	position: fixed;
+	width: 100%;
+}
+
+.fixed-inner {
+	margin: auto;
+	max-width: 35em;
+	position: relative;
+}
+
+.scroll-to-top,
+.quick-search {
+	background-color: rgba(102, 102, 255, 0.7); /* #66f */
+	border-radius: 1.1em;
+	border: 2px solid;
+	bottom: 0.2em;
+	color: white;
+	font-size: x-large;
+	height: 2em;
+	position: absolute;
+	text-align: center;
+	transition: width 0.2s;
+	width: 2em;
+}
+
+.icon-button {
+	cursor: pointer;
+	fill: currentColor;
+	height: 1em;
+	padding: 0.5em;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 1em;
+}
+
+.icon-button svg {
+	width: 100%;
+	height: 100%;
+}
+
+.scroll-to-top {
+	left: 0.2em;
+}
+
+.quick-search {
+	right: 0.2em;
+}
+
+.quick-search .close-button,
+.quick-search input {
+	display: none;
+}
+
+.quick-search input {
+	animation: delay-appear 0.2s;
+	border-radius: 0.6em;
+	border-style: none;
+	font-size: inherit;
+	left: 0;
+	line-height: 1.4em;
+	margin: 0.3em 0 0.3em 0.4em;
+	outline-style: none;
+	padding: 0 0.5em;
+	position: absolute;
+	top: 0;
+	width: 5.8em;
+}
+
+.quick-search.open {
+	width: 8em;
+}
+
+.quick-search.open .close-button,
+.quick-search.open input {
+	display: block;
+}
+
+.quick-search.open .search-button {
+	display: none;
+}
+
+@keyframes delay-appear {
+	0% { opacity: 0; }
+	99% { opacity: 0; }
+	100% { opacity: 1; }
 }

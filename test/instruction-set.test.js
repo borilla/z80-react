@@ -33,4 +33,11 @@ describe('InstructionSet component', () => {
 		const tables = container.querySelectorAll('table.instruction-table');
 		expect(tables.length).toEqual(3);
 	});
+
+	test('instruction-tables are ordered alphabetically', () => {
+		const titles = container.querySelectorAll('table thead tr:nth-child(1)');
+		expect(titles[0].textContent).toEqual('ini');
+		expect(titles[1].textContent).toEqual('jp');
+		expect(titles[2].textContent).toEqual('xor');
+	});
 });

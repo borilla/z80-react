@@ -5,7 +5,7 @@ function InstructionSet(props) {
 	const { instructionSet } = props;
 
 	function renderInstructions() {
-		const mnemonics = Object.keys(instructionSet);
+		const mnemonics = Object.keys(instructionSet).sort();
 
 		return mnemonics.map(function (mnemonic) {
 			return <InstructionTable key={ mnemonic } mnemonic={ mnemonic } instructions={ instructionSet[mnemonic] } />

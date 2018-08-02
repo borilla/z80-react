@@ -32,7 +32,8 @@ function InstructionTable(props) {
 }
 
 function extractOperands(instruction) {
-	var i = instruction.indexOf(' ');
+	const i = instruction.indexOf(' ');
+
 	return i > -1 ? instruction.slice(i) : '';
 }
 

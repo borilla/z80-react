@@ -30,4 +30,11 @@ describe('InstructionTable component', () => {
 		const rows = container.querySelectorAll('tbody tr');
 		expect(rows.length).toEqual(3);
 	});
+
+	test('instructions are ordered alphabetically', () => {
+		const cells = container.querySelectorAll('tbody td:nth-child(1)');
+		expect(cells[0].textContent).toEqual('xor a');
+		expect(cells[1].textContent).toEqual('xor b');
+		expect(cells[2].textContent).toEqual('xor c');
+	});
 });

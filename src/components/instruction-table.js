@@ -4,7 +4,7 @@ function InstructionTable(props) {
 	const { mnemonic, instructions } = props;
 
 	function renderRows() {
-		return instructions.map((item) => {
+		return instructions.sort(compareInstructions).map((item) => {
 			const { instruction, nops, opcodes } = item;
 			const operands = extractOperands(instruction);
 
@@ -29,6 +29,10 @@ function InstructionTable(props) {
 			</tbody>
 		</table>
 	);
+}
+
+function compareInstructions(a, b) {
+	return a.instruction < b.instruction ? -1 : a.instruction > b.instruction ? 1 : 0;
 }
 
 function extractOperands(instruction) {

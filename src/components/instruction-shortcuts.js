@@ -6,11 +6,10 @@ function InstructionShortcuts(props) {
 
 	function renderShortcutGroups() {
 		const groups = [];
-		var letterCode, letter, mnemonics;
 
-		for (letterCode = 'a'.charCodeAt(0); letterCode <= 'z'.charCodeAt(0); ++letterCode) {
-			letter = String.fromCharCode(letterCode);
-			mnemonics = mnemonicsStartingWith(letter);
+		for (let letterCode = 'a'.charCodeAt(0); letterCode <= 'z'.charCodeAt(0); ++letterCode) {
+			const letter = String.fromCharCode(letterCode);
+			const mnemonics = mnemonicsStartingWith(letter);
 
 			if (mnemonics.length) {
 				groups.push(<InstructionShortcutGroup key={ letter } mnemonics={ mnemonics } />);

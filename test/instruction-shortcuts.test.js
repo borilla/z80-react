@@ -9,6 +9,7 @@ describe('InstructionShortcuts component', () => {
 		'add': {},
 		'pop': {},
 		'push': {},
+		'adc': {},
 	};
 
 	let container;
@@ -32,5 +33,15 @@ describe('InstructionShortcuts component', () => {
 		const uls = container.querySelectorAll('div.shortcuts ul');
 		const initialLetters = [...uls].map((ul) => ul.children[0].textContent[0]);
 		expect(initialLetters).toEqual(['a', 'p', 'x']);
+	});
+
+	test('orders mnemonics within groups alphabetically', () => {
+		const uls = container.querySelectorAll('div.shortcuts ul');
+		const mnemonics = [...uls].map(ul => [...ul.children].map(li => li.textContent));
+		expect(mnemonics).toEqual([
+			['adc', 'add', 'and'],
+			['pop', 'push'],
+			['xor'],
+		]);
 	});
 });

@@ -22,7 +22,7 @@ function InstructionShortcuts(props) {
 	function mnemonicsStartingWith(letter) {
 		return allMnemonics.filter(function (mnemonic) {
 			return mnemonic.charAt(0) === letter;
-		});
+		}).sort();
 	}
 
 	return (

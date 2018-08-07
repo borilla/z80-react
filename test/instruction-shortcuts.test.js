@@ -47,4 +47,14 @@ describe('InstructionShortcuts component', () => {
 			['xor'],
 		]);
 	});
+
+	test('mnemonics link to anchors within the page', () => {
+		const links = container.querySelectorAll('li a');
+		const hrefs = [...links].map(a => a.getAttribute('href'));
+		expect(hrefs).toEqual([
+			'#adc', '#add', '#and',
+			'#pop', '#push',
+			'#xor',
+		])
+	});
 });

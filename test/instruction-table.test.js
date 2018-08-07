@@ -26,6 +26,11 @@ describe('InstructionTable component', () => {
 		expect(row.textContent).toEqual(mnemonic);
 	});
 
+	test('table has id matching mnemonic', () => {
+		const table = container.querySelector('table.instruction-table');
+		expect(table.id).toEqual(mnemonic);
+	});
+
 	test('contains a row for each instruction', () => {
 		const rows = container.querySelectorAll('tbody tr');
 		expect(rows.length).toEqual(3);

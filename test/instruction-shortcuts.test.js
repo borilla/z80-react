@@ -7,6 +7,8 @@ describe('InstructionShortcuts component', () => {
 		'and': {},
 		'xor': {},
 		'add': {},
+		'pop': {},
+		'push': {},
 	};
 
 	let container;
@@ -16,8 +18,19 @@ describe('InstructionShortcuts component', () => {
 		ReactDOM.render(<InstructionShortcuts instructionSet={ instructionSet } />, container);
 	});
 
-	test('renders a div', () => {
+	test('renders a div container', () => {
 		const divs = container.querySelectorAll('div.shortcuts');
 		expect(divs.length).toEqual(1);
+	});
+
+	test('renders a group for each unique initial letter', () => {
+		const uls = container.querySelectorAll('div.shortcuts ul');
+		expect(uls.length).toEqual(3);
+	});
+
+	test('orders groups alphabetically', () => {
+		const uls = container.querySelectorAll('div.shortcuts ul');
+		const initialLetters = [...uls].map((ul) => ul.children[0].textContent[0]);
+		expect(initialLetters).toEqual(['a', 'p', 'x']);
 	});
 });

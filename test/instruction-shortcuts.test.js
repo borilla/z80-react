@@ -4,15 +4,19 @@ import InstructionShortcuts from '../src/components/instruction-shortcuts';
 
 describe('InstructionShortcuts component', () => {
 	const instructionSet = {
-		'and': {},
-		'xor': {},
-		'add': {},
-		'pop': {},
-		'push': {},
-		'adc': {},
+		'and': [],
+		'xor': [],
+		'add': [],
+		'pop': [],
+		'push': [],
+		'adc': [],
 	};
-
 	let container;
+
+	function convertGroupsToArray(container) {
+		const uls = container.querySelectorAll('div.shortcuts ul');
+		return [...uls].map(ul => [...ul.children].map(li => li.textContent));
+	}
 
 	beforeEach(() => {
 		container = document.createElement('div');
@@ -30,15 +34,14 @@ describe('InstructionShortcuts component', () => {
 	});
 
 	test('orders groups alphabetically', () => {
-		const uls = container.querySelectorAll('div.shortcuts ul');
-		const initialLetters = [...uls].map((ul) => ul.children[0].textContent[0]);
+		const grpups = convertGroupsToArray(container);
+		const initialLetters = grpups.map(group => group[0].charAt(0));
 		expect(initialLetters).toEqual(['a', 'p', 'x']);
 	});
 
 	test('orders mnemonics within groups alphabetically', () => {
-		const uls = container.querySelectorAll('div.shortcuts ul');
-		const mnemonics = [...uls].map(ul => [...ul.children].map(li => li.textContent));
-		expect(mnemonics).toEqual([
+		const groups = convertGroupsToArray(container);
+		expect(groups).toEqual([
 			['adc', 'add', 'and'],
 			['pop', 'push'],
 			['xor'],
